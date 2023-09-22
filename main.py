@@ -34,6 +34,7 @@ class RedditScanner:
                 if self._matches_criteria(submission.title.lower(), submission.link_flair_text):
                     self.last_post_time = submission.created_utc
                     self.last_post_time_available = True
+                    print(f"title: {submission.title}\nurl: {submission.url}\n")
                     self.pb.push_note(submission.title, submission.url)
                     break
         else:
@@ -45,6 +46,7 @@ class RedditScanner:
                     posts_to_notify.append(submission)
 
             for post in reversed(posts_to_notify):
+                print(f"title: {post.title}\nurl: {post.url}\n")
                 self.pb.push_note(post.title, post.url)
             if posts_to_notify:
                 self.last_post_time = posts_to_notify[-1].created_utc
