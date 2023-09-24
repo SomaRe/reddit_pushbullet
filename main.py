@@ -17,7 +17,6 @@ class RedditScanner:
             client_secret=keys.reddit_client_secret,
             user_agent="bestdeals",
         )
-        self.pb = Pushbullet(keys.PUSHBULLET_ACCESS_TOKEN)
 
     def _matches_criteria(self, title, flair):
         if flair not in ["Selling", "Selling\\Trading"]:
@@ -29,6 +28,7 @@ class RedditScanner:
         return False
 
     def scan_new_posts(self):
+        pb = Pushbullet(keys.PUSHBULLET_ACCESS_TOKEN)
         if not self.last_post_time_available:
             for submission in self.reddit.subreddit(self.subreddit_name).new(limit=None):
                 if self._matches_criteria(submission.title.lower(), submission.link_flair_text):
