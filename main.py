@@ -35,7 +35,7 @@ class RedditScanner:
                     self.last_post_time = submission.created_utc
                     self.last_post_time_available = True
                     print(f"title: {submission.title}\nurl: {submission.url}\n")
-                    self.pb.push_note(submission.title, submission.url)
+                    pb.push_note(submission.title, submission.url)
                     break
         else:
             posts_to_notify = []
@@ -47,7 +47,7 @@ class RedditScanner:
 
             for post in reversed(posts_to_notify):
                 print(f"title: {post.title}\nurl: {post.url}\n")
-                self.pb.push_note(post.title, post.url)
+                pb.push_note(post.title, post.url)
             if posts_to_notify:
                 self.last_post_time = posts_to_notify[-1].created_utc
 
