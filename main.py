@@ -21,8 +21,8 @@ class RedditScanner:
     def _matches_criteria(self, title, flair):
         if flair not in ["Selling", "Selling\\Trading"]:
             return False
-        if re.search(self.regex, title):
-            return True
+        # if re.search(self.regex, title):
+        #     return True
         if any(param in title for param in self.parameters):
             return True
         return False
