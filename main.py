@@ -28,7 +28,11 @@ class RedditScanner:
         return False
 
     def scan_new_posts(self):
-        pb = Pushbullet(keys.PUSHBULLET_ACCESS_TOKEN)
+        try:
+            pb = Pushbullet(keys.PUSHBULLET_ACCESS_TOKEN)
+        except Exception as e:
+            print(e)
+            return
         if not self.last_post_time_available:
             for submission in self.reddit.subreddit(self.subreddit_name).new(limit=None):
                 if self._matches_criteria(submission.title.lower(), submission.link_flair_text):
