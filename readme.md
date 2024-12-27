@@ -2,10 +2,11 @@
 
 This project scans specific subreddits for new posts that match given criteria and sends notifications with the post title and link to your devices using Pushbullet.
 
+
 ## Features
 
 - Searches for new posts in specified subreddits.
-- Filters posts based on specific criteria (Regex and parameters).
+- Filters posts based on specific criteria (Regex and/or parameters).
 - Sends notifications with post title and link via Pushbullet.
 
 ## Setup
